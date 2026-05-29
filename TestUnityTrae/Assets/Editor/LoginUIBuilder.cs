@@ -15,17 +15,13 @@ namespace TestUnityTrae.Editor
         {
             m_defaultFont = TMP_Settings.defaultFontAsset;
 
-            Canvas canvas = Object.FindObjectOfType<Canvas>();
-            if (canvas == null)
-            {
-                GameObject canvasObj = new GameObject("Canvas");
-                canvas = canvasObj.AddComponent<Canvas>();
-                canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-                CanvasScaler scaler = canvasObj.AddComponent<CanvasScaler>();
-                scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-                scaler.referenceResolution = new Vector2(1920, 1080);
-                canvasObj.AddComponent<GraphicRaycaster>();
-            }
+            GameObject canvasObj = new GameObject("LoginCanvas");
+            Canvas canvas = canvasObj.AddComponent<Canvas>();
+            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            CanvasScaler scaler = canvasObj.AddComponent<CanvasScaler>();
+            scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            scaler.referenceResolution = new Vector2(1920, 1080);
+            canvasObj.AddComponent<GraphicRaycaster>();
 
             Transform existingRoot = canvas.transform.Find("LoginRoot");
             if (existingRoot != null)
